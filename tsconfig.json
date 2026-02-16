@@ -10,9 +10,13 @@
       "DOM.Iterable"
     ],
     "skipLibCheck": true,
+<<<<<<< HEAD
     "types": [
       "node"
     ],
+=======
+  "types": [],
+>>>>>>> ab4f963002b34ba4fb4c1c76c51ba585fe3f12d6
     "moduleResolution": "bundler",
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -24,9 +28,21 @@
       ]
     },
     "allowImportingTsExtensions": true,
+<<<<<<< HEAD
     "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
     "resolveJsonModule": true
   }
+=======
+    "noEmit": true
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+>>>>>>> ab4f963002b34ba4fb4c1c76c51ba585fe3f12d6
 }

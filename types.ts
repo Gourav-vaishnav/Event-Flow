@@ -18,9 +18,5 @@ export interface Event {
   description: string;
   invitees: Invitee[];
   views: number;
-<<<<<<< HEAD
   photoAlbumUrl?: string;
-  imageUrl?: string;
-=======
->>>>>>> ab4f963002b34ba4fb4c1c76c51ba585fe3f12d6
 }

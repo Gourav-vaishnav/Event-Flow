@@ -5,7 +5,6 @@ import { Event, RSVPStatus } from '../types';
 import CalendarIcon from './icons/CalendarIcon';
 import LocationIcon from './icons/LocationIcon';
 import PhotoIcon from './icons/PhotoIcon';
-import LazyImage from './LazyImage';
 
 const RsvpPage: React.FC = () => {
   const { eventId } = useParams<{ eventId: string }>();

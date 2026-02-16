@@ -4,15 +4,8 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "env": {
-    "GEMINI_API_KEY": "@gemini_api_key",
-    "REACT_APP_API_URL": "@backend_api_url"
+    "GEMINI_API_KEY": "@gemini_api_key"
   },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "${REACT_APP_API_URL}/api/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/index.html",
@@ -34,4 +27,3 @@
     }
   ]
 }
-

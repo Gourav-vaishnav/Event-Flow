@@ -1,91 +1,56 @@
-# 🎉 Event Platform  
+# EventFlow - Event RSVP Platform
 
-Welcome to **Event Platform** – a simple and modern solution to **create, manage, and participate in events** hassle-free.  
-Whether you’re organizing a concert, workshop, or community meetup, this platform makes it easier than ever to bring people together.  
+A modern, client-side platform to create events, manage invitations, and track RSVPs. Organizers can view a dashboard with real-time attendance statistics and a visual breakdown of responses.
 
----
+## Features
 
-## ✨ What is Event Platform? 
+- 📅 Create and manage events
+- 📧 Share invitation links with email templates
+- 📊 Real-time RSVP dashboard with analytics
+- 🎨 Dark mode support with theme toggle
+- 📱 Fully responsive design
+- 🔐 Client-side data persistence
 
-Event Platform is a **web-based application** that helps:  
-- 👩‍💼 **Organizers** → Create, publish, and manage events with ease.  
-- 👨‍👩‍👧 **Attendees** → Discover, register, and keep track of events they care about.  
-- 🎯 **Communities** → Stay connected through smooth event management.  
+## Prerequisites
 
-Think of it as your **digital hub for events**, eliminating messy spreadsheets and endless back-and-forth emails.  
+- Node.js 16+
+- npm or yarn
 
----
+## Installation
 
-## 🚀 Key Features  
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-✅ **Event Creation** – Add title, description, date, time, and venue in minutes.  
-✅ **Event Registration** – Easy sign-up for attendees with instant confirmation.  
-✅ **User-Friendly Interface** – Clean design so anyone can use it (no coding required!).  
-✅ **Secure & Reliable** – Data protection and smooth event handling.  
-✅ **Scalable** – Works for small meetups or large conferences.  
-
----
-
-## 🛠️ How It Works  
-
-1. ✍️ **Organizers** → Create an event with details.  
-2. 👥 **Users** → Browse or search for events.  
-3. 📝 **Register** → Join an event with a single click.  
-4. 🎊 **Attend & Enjoy** → That’s it!  
-
----
-
-## 📦 Installation (For Developers)  
-
-If you’re a developer and want to run it locally:  
+## Development
 
 ```bash
-# Clone this repository
-git clone https://github.com/Gourav-vaishnav/Event-Platform.git
-
-# Go to project folder
-cd Event-Platform
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm start
+npm run dev
 ```
 
-Then open 👉 **http://localhost:5173/** in your browser. 
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
----
+## Production Build
 
-## 👩‍💻 Tech Stack  
+```bash
+npm run build
+```
 
-- ⚛️ **React.js** – Frontend  
-- 🎨 **Tailwind CSS** – Styling  
-- 🔧 **Node.js / Express** – Backend  
-- 🗄️ **MongoDB** – Database  
+## Deployment on Vercel
 
----
+This app is optimized for deployment on [Vercel](https://vercel.com):
 
-## 🤝 Contributing  
+1. Push your code to GitHub
+2. Import the project in Vercel
+3. Deploy automatically on every push!
 
-We welcome contributions! 💡  
-If you’d like to improve this project:  
-1. Fork the repo 🍴  
-2. Create a new branch ✨  
-3. Make your changes 🔨  
-4. Submit a Pull Request 🚀  
+## Tech Stack
 
----
-
-
-
-## 💌 Connect  
-
-👤 **Author:** Gourav Vaishnav  
-🌐 [GitHub Profile](https://github.com/Gourav-vaishnav)  
-
----
-
-⭐ If you like this project, don’t forget to **star the repo** – it motivates us to build more amazing tools!!! 
-
----
+- **Frontend:** React 19, TypeScript
+- **Routing:** React Router v7
+- **Styling:** Tailwind CSS
+- **Charts:** Recharts
+- **Build Tool:** Vite
+- **Data Storage:** Browser LocalStorage

@@ -7,7 +7,6 @@ import CalendarIcon from './icons/CalendarIcon';
 import LocationIcon from './icons/LocationIcon';
 import SendIcon from './icons/SendIcon';
 import PhotoIcon from './icons/PhotoIcon';
-import { GoogleGenAI } from '@google/genai';
 
 
 const StatusBadge: React.FC<{ status: RSVPStatus }> = ({ status }) => {
@@ -27,7 +26,6 @@ const EventDashboard: React.FC = () => {
   const [event, setEvent] = useState<Event | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
   const [emailBody, setEmailBody] = useState('');
   const [emailSubject, setEmailSubject] = useState('');
   const navigate = useNavigate();
@@ -61,68 +59,30 @@ const EventDashboard: React.FC = () => {
     };
   }, [event]);
 
-  const handleOpenInviteModal = async () => {
+  const handleOpenInviteModal = () => {
     setIsInviteModalOpen(true);
     if (!emailBody) {
-      await handleGenerateInvite();
+      handleGenerateInvite();
     }
   };
 
-  const handleGenerateInvite = async (regenerate = false) => {
+  const handleGenerateInvite = (regenerate = false) => {
     if (!event) return;
-    if (isGenerating) return;
 
-    setIsGenerating(true);
     if (regenerate) {
       setEmailBody('');
       setEmailSubject('');
     }
 
-    try {
-      if (!process.env.API_KEY) {
-        alert("API_KEY environment variable not set. Please configure it to use the AI features.");
-        throw new Error("API_KEY not found");
-      }
-
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-      const prompt = `Write a friendly and concise email invitation for an event.
-      Here are the event details:
-      - Event Name: ${event.name}
-      - Date and Time: ${new Date(event.datetime).toLocaleString()}
-      - Location: ${event.location}
-      - Description: ${event.description || 'No description provided.'}
-
-      Your task is to generate the body of the email.
-      Keep the tone welcoming and enthusiastic.
-      Structure the email clearly with the event details.
-      Conclude the email with this exact line, without any modifications: "To let us know if you can make it, please RSVP here: ${rsvpLink}"
-      Do not add placeholders like "[Link]" or "[Event Name]". Use the actual details provided.
-      `;
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-      });
-
-      setEmailBody(response.text);
-      setEmailSubject(`You're invited to: ${event.name}!`);
-
-    } catch (error) {
-      // Error handled silently
-      alert("Failed to generate email content. A default template will be used. You might need to check your API key or network connection. Please see the console for more details.");
-      setEmailSubject(`Invitation: ${event.name}`);
-      setEmailBody(
-        `Hello,\n\nYou are invited to the following event:\n\n` +
-        `Event: ${event.name}\n` +
-        `When: ${new Date(event.datetime).toLocaleString()}\n` +
-        `Where: ${event.location}\n\n` +
-        `${event.description ? `Description:\n${event.description}\n\n` : ''}` +
-        `To let us know if you can make it, please RSVP here: ${rsvpLink}`
-      );
-    } finally {
-      setIsGenerating(false);
-    }
+    setEmailSubject(`Invitation: ${event.name}`);
+    setEmailBody(
+      `Hello,\n\nYou are invited to the following event:\n\n` +
+      `Event: ${event.name}\n` +
+      `When: ${new Date(event.datetime).toLocaleString()}\n` +
+      `Where: ${event.location}\n\n` +
+      `${event.description ? `Description:\n${event.description}\n\n` : ''}` +
+      `To let us know if you can make it, please RSVP here: ${rsvpLink}`
+    );
   };
 
   const openMailClient = () => {
